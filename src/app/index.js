@@ -3,21 +3,15 @@ import {Link } from 'expo-router';
 import UserDetails from '../components/UserDetails'
 import LoginPage from "./LoginPage";
 import MapArea from "./MapArea";
+import FlatListPage from "./FlatListPage";
+import Sandbox from "./Sandbox";
 
 export default function Page() {
   return (
-    <SafeAreaView>
-      {/* <LoginPage/> */}
+    <SafeAreaView style={{flex:1}}>
       <MapArea />
       </SafeAreaView>
+      //   <LoginPage/>
+      // <Sandbox />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    // padding: 10,
-    paddingLeft:0,
-    paddingRight:0
-  }
-});
