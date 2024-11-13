@@ -1,19 +1,25 @@
+import {GOOGLE_MAPS_API_KEY} from "@env"
+
 import { useEffect, useState } from 'react';
 import {View, Text, StyleSheet, Dimensions, TouchableOpacity, 
     Image, FlatList} from 'react-native';
-import MapView, { Marker } from 'react-native-maps'
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as Location from 'expo-location'; // If using Expo
 import FlatListPage from './FlatListPage';
+
+const apiKey = GOOGLE_MAPS_API_KEY;
+
+console.log("apiKey--------------------------->", apiKey)
 
 const MapArea = () => {
     const [currentLocation, setCurrentLocation] = useState({
         pickupCords:{
             latitude: 12.8874,
             longitude: 77.5969,
-            latitudeDelta: 0.00930,
-            longitudeDelta: 0.00930,
+            latitudeDelta:  0.0922,
+            longitudeDelta: 0.0421,
         }
     });
 
@@ -32,13 +38,13 @@ const MapArea = () => {
 
     const markerCoordinates = [
         {
-            coords: { latitude: 12.894, longitude: 77.5969, latitudeDelta: 0.00930, longitudeDelta: 0.0130, },
+            coords: { latitude: 18.894, longitude: 77.5969, latitudeDelta: 0.00930, longitudeDelta: 0.0130, },
             image: "https://cdn.iconscout.com/icon/free/png-256/free-github-159-721954.png",
             name: "Pawan",
             id:1
         },
         {
-            coords: { latitude: 12.888, longitude: 77.598, latitudeDelta: 0.0130, longitudeDelta: 0.0130, },
+            coords: { latitude: 47.0448, longitude: 37.976, latitudeDelta: 0.0130, longitudeDelta: 0.0130, },
             image: "https://www.pngkey.com/png/detail/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png",
             name: "Sandeep",
             id:2
@@ -50,13 +56,13 @@ const MapArea = () => {
             id:3
         },
         {
-            coords: { latitude: 12.8885278, longitude: 77.6048097, latitudeDelta: 0.0130, longitudeDelta: 0.0130, },
+            coords: { latitude: 34.8885278, longitude: 77.6048097, latitudeDelta: 0.0130, longitudeDelta: 0.0130, },
             image: "https://cdn-icons-png.flaticon.com/512/219/219969.png",
             name: "Choti",
             id:4
         },
         {
-            coords: { latitude: 12.894, longitude: 77.5969, latitudeDelta: 0.00930, longitudeDelta: 0.0130, },
+            coords: { latitude: 14.894, longitude: 77.5969, latitudeDelta: 0.00930, longitudeDelta: 0.0130, },
             image: "https://cdn.iconscout.com/icon/free/png-256/free-github-159-721954.png",
             name: "Surabhi",
             id:5
@@ -93,10 +99,13 @@ const MapArea = () => {
             <View style={styles.container}> 
                 <View style={styles.map_wrapper}>
                     <MapView
-                            initialRegion={currentLocation.pickupCords}
+                            provider={PROVIDER_GOOGLE}
                             style={styles.mapStyle}
+                            region={currentLocation}
                             showsUserLocation={true}
-                            provider='google'
+                            showsMyLocationButton={true}
+                            followsUserLocation={true}
+                            apiKey={apiKey} 
                             >
                                 {markerCoordinates.map((data, index) => (
                                     <Marker
@@ -109,7 +118,8 @@ const MapArea = () => {
                                         >
                                             <Image
                                                 source={{uri:data.image}}
-                                                style={{width: 80, height: 80}}
+                                                style={styles.markerImage}
+                                                resizeMode="contain"
                                             />
                                     </Marker>
                                 ))}
@@ -144,8 +154,8 @@ const styles = StyleSheet.create({
 
     },
     marker_style:{
-        height: 80,
-        width: 80
+        width: '100%',
+        height: '100%',
     },
     re_center:{
         backgroundColor: 'red',
@@ -160,7 +170,12 @@ const styles = StyleSheet.create({
     mapStyle:{
         minHeight: '70%',
         minWidth: '100%',
-    }
+    },
+    markerImage: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+    },
 
 
 })
