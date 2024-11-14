@@ -13,9 +13,6 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.rjsnh1522.wayfind"
@@ -28,21 +25,13 @@
       "package": "com.rjsnh1522.wayfind"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "output": "static"
     },
     "plugins": [
-      [
-        "expo-router",
-        {
-          "root": "./src/app"
-        }
-      ]
+        "expo-router"
     ],
     "extra": {
-      "router": {
-        "origin": false,
-        "root": "./src/app"
-      },
       "eas": {
         "projectId": "0646e39c-51d3-41f9-8274-6ac54a509b29"
       }

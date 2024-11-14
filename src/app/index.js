@@ -1,33 +1,34 @@
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import {Link } from 'expo-router';
-import UserDetails from '../components/UserDetails'
-import LoginPage from "./LoginPage";
-import MapArea from "./MapArea";
-import FlatListPage from "./FlatListPage";
-import AuthScreens from "../screens/AuthScreen";
-import ScreenWrapper from "../app/ScreenWrapper"
-// import Sandbox from "./Sandbox";
-
-
-const Stack = createStackNavigator();
+import { StyleSheet, Text, View } from "react-native";
 
 export default function Page() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Login"
-          component={AuthScreens}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-    // {/* <SafeAreaView style={{flex:1}}>
-    //   {/* <MapArea /> */}
-    //   <AuthScreen />
-    //   </SafeAreaView>
-    //   //   <LoginPage/>
-    //   // <Sandbox /> */}
+    <View style={styles.container}>
+      <View style={styles.main}>
+        <Text style={styles.title}>Hello World</Text>
+        <Text style={styles.subtitle}>This is the first page of your app.</Text>
+      </View>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    padding: 24,
+  },
+  main: {
+    flex: 1,
+    justifyContent: "center",
+    maxWidth: 960,
+    marginHorizontal: "auto",
+  },
+  title: {
+    fontSize: 64,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    fontSize: 36,
+    color: "#38434D",
+  },
+});

@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { View, Text, Image, StyleSheet, SafeAreaView } from 'react-native';
-import  theme  from '../components/theme';
-import { Button } from '../components/Button';
+import  theme  from '../../components/theme';
+import { Button } from '../../components/Button';
 import { Card } from '../components/Card';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
